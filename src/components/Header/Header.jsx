@@ -27,7 +27,7 @@ const Header = () => {
 
 
   return (
-    <Box p='40' mb={20} w={'100%'} h={'120'}>
+    <Box p='40' w={'100%'} h={'120'}>
       <Container maxW={'container.xl'}>
         <Flex as={'header'} justifyContent={'space-between'}>
           <Flex  gap={'8'} alignItems={'end'}>
