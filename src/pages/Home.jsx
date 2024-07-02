@@ -9,6 +9,8 @@ const Home = () => {
 
   const MotionButton = motion(Button)
   const year = new Date().getFullYear(); // получаем актуальный год
+
+  
   return (
    <Helmet title={'Home'}>
       <Box px={40} py={50} bg={'#d6e5fb'}>
@@ -24,12 +26,12 @@ const Home = () => {
               <Text>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eaque dolore repudiandae explicabo non officiis assumenda nobis voluptatum hic voluptate.
               </Text>
+              <Link to='/shop'>
               <MotionButton bg={'#0a1d37'}  fontSize={16} py={'15px'} px={'40px'} borderRadius={'50'}  color={'#fff'} mt={30} border={'none'}
-                whileTap={{ scale: 0.9 }} >
-                <Link to='/shop'>
+                whileTap={{ scale: 0.9 }} whileHover={{scale: 1.05}}>
                  Shop Now
-                </Link>
-              </MotionButton>                                                                                  
+              </MotionButton>  
+              </Link>                                                                                
             </Box>
             <Box>
               <Image src={heroImg}/>
