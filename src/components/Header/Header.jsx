@@ -1,21 +1,25 @@
 import React from 'react'
 //import { useState } from 'react';
-import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, Link } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, Link, IconButton } from '@chakra-ui/react';
 import { NavLink, useLocation } from 'react-router-dom'
 import { FiShoppingBag } from "react-icons/fi";
 import { FiHeart } from "react-icons/fi";
-import { FiUser } from "react-icons/fi";
+//import { FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
+import { motion } from 'framer-motion'
 import logo from './../../assets/images/eco-logo.png'
+import userImg from './../../assets/images/user-icon.png'
 
 
 const Header = () => {
+
 
   // const [menu, setMenu] = useState("home"); 
   const location = useLocation();
   const activeColor = useColorModeValue('teal.500', 'teal.200');
   const inactiveColor = useColorModeValue('gray.600', 'gray.400');
 
+  const MotionBox = motion(Box)
 
   const getLinkColor = (path) => {
     return location.pathname === path ? activeColor : inactiveColor;
@@ -23,7 +27,7 @@ const Header = () => {
 
 
   return (
-    <Box py='20' mb={8} w={'100%'} h={'70'}>
+    <Box p='40' mb={20} w={'100%'} h={'120'}>
       <Container maxW={'container.xl'}>
         <Flex as={'header'} justifyContent={'space-between'}>
           <Flex  gap={'8'} alignItems={'end'}>
@@ -54,7 +58,7 @@ const Header = () => {
                 >Shop
                 </Link>
               </NavLink>   
-             <NavLink to= '/cart'>
+             <NavLink to= '/cart' >
                 <Link
                    px={2}
                    py={1}
@@ -63,17 +67,31 @@ const Header = () => {
                    color={getLinkColor('/cart')}>
                 Cart
                 </Link>
+                
               </NavLink>        
           </Flex>
           <Flex gap={'20'} alignItems={'center'}> 
           <NavLink to='/shop'>
-           <FiShoppingBag />
+            <Box pos={'relative'}>
+              <IconButton as={FiShoppingBag} w={'24px'} h={'24px'} />
+              <Box as='span' pos={'absolute'} top={'-8%'} right={'-18%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                1
+              </Box> 
+            </Box>
           </NavLink>
           <NavLink to='/fav'>
-            <FiHeart />
+          <Box pos={'relative'}>
+              <IconButton as={FiHeart} w={'27px'} h={'27px'} />
+              <Box as='span' pos={'absolute'} top={'-8%'} right={'-18%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                2
+              </Box> 
+            </Box>
           </NavLink>
           <NavLink to='/login'>
-            <FiUser />
+          <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+            <Image src={userImg} alt='user' w={35} h={35}/>
+              {/* <IconButton as={FiUser} w={'25px'} h={'25px'} /> */}
+          </MotionBox>
           </NavLink>
           </Flex>
           <Box display={'none'}>
@@ -95,3 +113,9 @@ export default Header
 // проаерерить работу картпнок 
 // найти новый лого
 // посмотреть по маршрутизации и переписать дизайн 
+// сделать анимацию
+
+
+
+
+ 
