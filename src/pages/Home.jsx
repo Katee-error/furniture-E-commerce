@@ -4,16 +4,17 @@ import { Container, Box, Flex, Text, Button, Image } from '@chakra-ui/react';
 import heroImg from './../assets/images/hero-img.png'
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import Services from '../services/Services';
 
 const Home = () => {
 
   const MotionButton = motion(Button)
   const year = new Date().getFullYear(); // получаем актуальный год
 
-  
+
   return (
    <Helmet title={'Home'}>
-      <Box px={40} py={50} bg={'#d6e5fb'}>
+      <Box as='section' px={40} py={50} bg={'#d6e5fb'}>
         <Container>
           <Flex gap={40} justifyContent={"space-between"} alignItems={'center'}>
             <Box>
@@ -39,7 +40,9 @@ const Home = () => {
         </Flex>
         </Container>
       </Box>
+      <Services/>
    </Helmet>
+   
   )
 }
 

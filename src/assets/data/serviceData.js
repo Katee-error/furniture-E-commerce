@@ -1,3 +1,4 @@
+
 const serviceData = [
   {
     icon: "ri-truck-line",
@@ -26,3 +27,4 @@ const serviceData = [
 ];
 
 export default serviceData;
+// поменять иконки 
