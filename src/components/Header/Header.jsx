@@ -54,8 +54,8 @@ const Header = () => {
                    py={1}
                    rounded="md"
                    _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }}
-                   color={getLinkColor('/shop')}
-                >Shop
+                   color={getLinkColor('/shop')}>
+                Shop
                 </Link>
               </NavLink>   
              <NavLink to= '/cart' >
@@ -67,7 +67,6 @@ const Header = () => {
                    color={getLinkColor('/cart')}>
                 Cart
                 </Link>
-                
               </NavLink>        
           </Flex>
           <Flex gap={'20'} alignItems={'center'}> 
@@ -75,7 +74,7 @@ const Header = () => {
             <Box pos={'relative'}>
               <IconButton as={FiShoppingBag} w={'24px'} h={'24px'} />
               <Box as='span' pos={'absolute'} top={'-8%'} right={'-18%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
-                1
+                1 
               </Box> 
             </Box>
           </NavLink>
@@ -108,12 +107,10 @@ export default Header
 
 
 // поменять лого на другую иконки или сделать  другой 
-//поменять размер иконок
-// Сделать смешанную верстку
-// проаерерить работу картпнок 
-// найти новый лого
 // посмотреть по маршрутизации и переписать дизайн 
-// сделать анимацию
+
+// сделать активное добавление спанов в зависимости от присутсивия товаров в корзине 
+
 
 
 
