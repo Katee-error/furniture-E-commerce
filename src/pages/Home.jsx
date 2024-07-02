@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Helmet from '../components/Helmet'
-import { Container, Box, Flex, Text, Button, Image } from '@chakra-ui/react';
+import { Container, Box, Flex, Text, Button, Image, Grid, Heading, Center } from '@chakra-ui/react';
 import heroImg from './../assets/images/hero-img.png'
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Services from '../services/Services';
+import ProductList from '../UI/ProductList';
+import products from '../assets/data/products';
 
 const Home = () => {
 
   const MotionButton = motion(Button)
   const year = new Date().getFullYear(); // получаем актуальный год
 
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [bestSalesProducts, setBestSalesProducts] = useState([]);
+
+  useEffect(() => {
+    const filteredTrendingProducts = products.filter((item) => item.category === 'chair');
+    const filteredBestSalesProducts = products.filter((item) => item.category === 'sofa');
+
+    setTrendingProducts(filteredTrendingProducts)
+    setBestSalesProducts(filteredBestSalesProducts)
+  }, [])
 
   return (
    <Helmet title={'Home'}>
@@ -41,6 +53,22 @@ const Home = () => {
         </Container>
       </Box>
       <Services/>
+      <Box as='section' px={40} py={50}>
+        <Center>
+          <Heading>Trending Product</Heading>
+        </Center>
+        <Grid p={40} templateColumns='repeat(4, 1fr)' gap={10}>
+            <ProductList data={trendingProducts}/>
+        </Grid>
+      </Box>
+      <Box as='section'  px={40} py={50}>
+        <Center>
+          <Heading>Best Sales</Heading>
+        </Center>
+        <Grid p={40} templateColumns='repeat(4, 1fr)' gap={10}>
+          <ProductList data={bestSalesProducts}/>
+        </Grid>
+      </Box>
    </Helmet>
    
   )
