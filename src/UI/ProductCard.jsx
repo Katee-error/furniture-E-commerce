@@ -51,3 +51,6 @@ const MotionButton = motion(Button)
 }
 
 export default ProductCard
+
+// поправить высоту карточек, посмотреть на выравнивание
+//Иконки!!!!!!!

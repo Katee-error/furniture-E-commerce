@@ -1,5 +1,5 @@
 import React from 'react'
-//import { useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, Link, IconButton } from '@chakra-ui/react';
 import { NavLink, useLocation } from 'react-router-dom'
 import { FiShoppingBag } from "react-icons/fi";
@@ -7,13 +7,29 @@ import { FiHeart } from "react-icons/fi";
 //import { FiUser } from "react-icons/fi";
 import { FiMenu } from "react-icons/fi";
 import { motion } from 'framer-motion'
-import logo from './../../assets/images/eco-logo.png'
-import userImg from './../../assets/images/user-icon.png'
+import logo from './../assets/images/eco-logo.png'
+import userImg from './../assets/images/user-icon.png'
 
 
 const Header = () => {
 
+const headerRef = useRef(null)
 
+const stickyNav = () => {
+  
+  window.addEventListener( 'scroll', () => {
+    if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    headerRef.current.classList.add( "???")
+    } else{
+    headerRef. current.classList. remove('???')
+    }})
+  } 
+
+
+useEffect(() => {
+    stickyNav()
+    return () => window.removeEventListener('scroll', stickyNav)
+  }, [])
   // const [menu, setMenu] = useState("home"); 
   const location = useLocation();
   const activeColor = useColorModeValue('teal.500', 'teal.200');
@@ -27,7 +43,17 @@ const Header = () => {
 
 
   return (
-    <Box p='40' w={'100%'} h={'120'}>
+    <Box ref={headerRef}
+    px='40' 
+    py={'30'} 
+    w={'100%'} 
+    h={'auto'} 
+    position="sticky"
+    top="0"
+    zIndex="1000"
+    bg="#fff"
+    boxShadow="md"
+    >
       <Container maxW={'container.xl'}>
         <Flex as={'header'} justifyContent={'space-between'}>
           <Flex  gap={'8'} alignItems={'end'}>
