@@ -22,10 +22,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         position="top-right"
         autoClose={3000}        
         closeOnClick
-        pauseOnHover
+        pauseOnHover={false}
         //theme='dark'
         />
-      <ToastContainer />
          <App />
       </Provider>
       {/* </AuthProvider> */}

@@ -1,36 +1,39 @@
 import React from 'react'
 import { useRef, useEffect } from 'react';
-import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, Link, IconButton } from '@chakra-ui/react';
 import { NavLink, useLocation } from 'react-router-dom'
-import { FiShoppingBag } from "react-icons/fi";
-import { FiHeart } from "react-icons/fi";
+import { useSelector } from 'react-redux';
+import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, Link, IconButton } from '@chakra-ui/react';
+import { FiShoppingBag, FiHeart, FiMenu } from "react-icons/fi";
 //import { FiUser } from "react-icons/fi";
-import { FiMenu } from "react-icons/fi";
 import { motion } from 'framer-motion'
+
 import logo from './../assets/images/eco-logo.png'
 import userImg from './../assets/images/user-icon.png'
 
 
-const Header = () => {
 
-const headerRef = useRef(null)
-const menuRef = useRef(null)
+const Header = () => {
+const totalQuantity = useSelector(state => state.cart.totalQuantity) // добавление товара в корзину => отображение кол-ва товара добавленного в корзину
+
+const headerRef = useRef(null) // sticky nav
+const menuRef = useRef(null) // burger menu
 
 const stickyNav = () => {
-  
   window.addEventListener( 'scroll', () => {
     if(document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
     headerRef.current.classList.add( "???")
     } else{
-    headerRef. current.classList. remove('???')
+    headerRef.current.classList.remove('???')
     }})
   } 
 
 
 useEffect(() => {
+
     stickyNav()
     return () => window.removeEventListener('scroll', stickyNav)
-  }, [])
+  }, []) 
+
   // const [menu, setMenu] = useState("home"); 
   const location = useLocation();
   const activeColor = useColorModeValue('teal.500', 'teal.200');
@@ -101,7 +104,7 @@ useEffect(() => {
             <Box pos={'relative'}>
               <IconButton as={FiShoppingBag} w={'24px'} h={'24px'} />
               <Box as='span' pos={'absolute'} top={'-8%'} right={'-18%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
-                1 
+                {totalQuantity} 
               </Box> 
             </Box>
           </NavLink>

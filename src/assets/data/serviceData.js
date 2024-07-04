@@ -1,25 +1,25 @@
 
 const serviceData = [
   {
-    icon: "ri-truck-line",
+    icon: 'public/Free-shipping.svg', 
     title: "Free Shipping",
     subtitle: "Lorem ipsum dolor sit amet.",
     bg: "#fdefe6",
   },
   {
-    icon: "ri-refresh-line",
+    icon:"public/Easy-returns.svg",
     title: "Easy Returns",
     subtitle: "Lorem ipsum dolor sit amet.",
     bg: "#ceebe9",
   },
   {
-    icon: "ri-secure-payment-line",
+    icon: "public/lock.svg",
     title: "Secure Payment",
     subtitle: "Lorem ipsum dolor sit amet.",
     bg: "#e2f2b2",
   },
   {
-    icon: "ri-exchange-dollar-line",
+    icon: "public/Back-guarantee.svg",
     title: " Back Guarantee",
     subtitle: "Lorem ipsum dolor sit amet.",
     bg: "#d6e5fb",
@@ -27,4 +27,3 @@ const serviceData = [
 ];
 
 export default serviceData;
-// поменять иконки 
