@@ -16,13 +16,22 @@ const Home = () => {
 
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [wardrobeProducts, setwardrobeProducts] = useState([]);
+  const [deskProducts, setdeskProducts] = useState([]);
+  const [tableProducts, setTableProducts] = useState([]);
 
   useEffect(() => {
     const filteredTrendingProducts = products.filter((item) => item.category === 'chair');
     const filteredBestSalesProducts = products.filter((item) => item.category === 'sofa');
+    const filteredWardrobeProducts = products.filter((item) => item.category === 'wardrobe');
+    const filteredDeskProducts = products.filter((item) => item.category === 'desk');
+    const filteredTableProducts = products.filter((item) => item.category === 'table');
 
     setTrendingProducts(filteredTrendingProducts)
     setBestSalesProducts(filteredBestSalesProducts)
+    setwardrobeProducts(filteredWardrobeProducts)
+    setdeskProducts(filteredDeskProducts)
+    setTableProducts(filteredTableProducts)
   }, [])
 
   return (
@@ -88,9 +97,32 @@ const Home = () => {
             </Link>
           </Box>
           <Image src={timerImg} w={'30%'} h={'30%'}  />
-        </Flex>1
+        </Flex>
       </Box>
-     
+      <Box as='section' px={40} py={50}>
+        <Center>
+          <Heading py={40}>Wardrobe</Heading>
+        </Center>
+        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+            <ProductList data={wardrobeProducts}/>
+        </Grid>
+      </Box>
+      <Box as='section'  px={40} py={50}>
+        <Center>
+          <Heading  py={40}>Desk</Heading>
+        </Center>
+        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+          <ProductList data={deskProducts}/>
+        </Grid>
+      </Box>
+      <Box as='section' px={40} py={50}>
+        <Center>
+          <Heading  py={40}>Table</Heading>
+        </Center>
+        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+            <ProductList data={tableProducts}/>
+        </Grid>
+      </Box>   
    </Helmet>
    
   )
