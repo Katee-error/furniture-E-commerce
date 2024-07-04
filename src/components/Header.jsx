@@ -14,6 +14,7 @@ import userImg from './../assets/images/user-icon.png'
 const Header = () => {
 
 const headerRef = useRef(null)
+const menuRef = useRef(null)
 
 const stickyNav = () => {
   
@@ -119,7 +120,7 @@ useEffect(() => {
           </MotionBox>
           </NavLink>
           </Flex>
-          <Box display={'none'}>
+          <Box display={'none'} >
             <FiMenu />
           </Box>
         </Flex>
@@ -134,12 +135,9 @@ export default Header
 
 // поменять лого на другую иконки или сделать  другой 
 // посмотреть по маршрутизации и переписать дизайн 
-
+// меню на мобилку
+//add driver!!!!!
 // сделать активное добавление спанов в зависимости от присутсивия товаров в корзине 
-
-
-
-
 // найти новый лого
 
 

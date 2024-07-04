@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Helmet from '../components/Helmet'
-import { Container, Box, Flex, Text, Button, Image, Grid, Heading, Center } from '@chakra-ui/react';
+import { Container, Box, Flex, Text, Button, Image, Grid, Heading, Center, SimpleGrid } from '@chakra-ui/react';
 import heroImg from './../assets/images/hero-img.png'
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -67,17 +67,17 @@ const Home = () => {
         <Center>
           <Heading>Trending Product</Heading>
         </Center>
-        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
             <ProductList data={trendingProducts}/>
-        </Grid>
+        </SimpleGrid>
       </Box>
       <Box as='section'  px={40} py={50}>
         <Center>
           <Heading>Best Sales</Heading>
         </Center>
-        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
           <ProductList data={bestSalesProducts}/>
-        </Grid>
+        </SimpleGrid>
       </Box>
       <Box as='section'  px={40} pt={60}  bg={'#0a1d37'} h={'auto'}>
         <Flex alignItems={'center'} justifyContent={'space-around'}>
@@ -103,25 +103,25 @@ const Home = () => {
         <Center>
           <Heading py={40}>Wardrobe</Heading>
         </Center>
-        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
             <ProductList data={wardrobeProducts}/>
-        </Grid>
+        </SimpleGrid>
       </Box>
       <Box as='section'  px={40} py={50}>
         <Center>
           <Heading  py={40}>Desk</Heading>
         </Center>
-        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
           <ProductList data={deskProducts}/>
-        </Grid>
+        </SimpleGrid>
       </Box>
       <Box as='section' px={40} py={50}>
         <Center>
           <Heading  py={40}>Table</Heading>
         </Center>
-        <Grid px={40} templateColumns='repeat(4, 1fr)' gap={20}>
+        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
             <ProductList data={tableProducts}/>
-        </Grid>
+        </SimpleGrid>
       </Box>   
    </Helmet>
    
@@ -129,5 +129,5 @@ const Home = () => {
 }
 
 export default Home
-// разбить на компоненты страницу
-// ывнести в компонент кнопку
+// разбить на компоненты страницу????
+// ывнести в компонент кнопку???

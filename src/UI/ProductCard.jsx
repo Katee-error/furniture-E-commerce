@@ -3,11 +3,26 @@ import { Card, CardBody, Image, Stack, Heading, Text, Divider, CardFooter, Butto
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { FiPlus } from "react-icons/fi";
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../redux/slice/cartSlice';
+
+import { toast } from 'react-toastify';// добавление уведомлениЯ о добавлении продукта в корзину
 
 const ProductCard = ({item}) => {
 
 const MotionImg = motion(Image)
 const MotionButton = motion(Button)
+
+const dispatch = useDispatch()
+const addToCart = () => {
+  dispatch(cartActions.addItem({
+    id: item.id,
+    productName: item.productName,
+    price: item.price,
+    image: item.imgUrl
+  }));
+toast.success('Product added successfully!') // добавление уведомлениЯ о добавлении продукта в корзину
+}
   return (
     <Card maxW='270px'>
         <CardBody>
@@ -32,7 +47,7 @@ const MotionButton = motion(Button)
             <Text fontSize={'1.3rem'} fontWeight={500} color={'#0a1d37'}>
             ${item.price}
             </Text>
-            <MotionButton 
+            <MotionButton onClick={addToCart}
                 mt={7}
                 bg={'#0a1d37'}
                 borderRadius={'50px'}
