@@ -80,11 +80,12 @@ const Home = () => {
               Quality Armchair
             </Heading>
             <TimerCount/>
+            <Link to='/shop'>
             <MotionButton whileTap={{ scale: 0.9 }}
                 bg={'#fff'}  fontSize={16} py={'12px'} px={'40px'} borderRadius={'50'}  color={'#0a1d37'} mt={30} border={'none'}
-            >
-              <Link to='/shop'>Visit Store</Link>
+            > Visit Store
             </MotionButton>
+            </Link>
           </Box>
           <Image src={timerImg} w={'30%'} h={'30%'}  />
         </Flex>1
