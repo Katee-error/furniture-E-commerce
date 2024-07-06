@@ -36,8 +36,8 @@ useEffect(() => {
 
   // const [menu, setMenu] = useState("home"); 
   const location = useLocation();
-  const activeColor = useColorModeValue('teal.500', 'teal.200');
-  const inactiveColor = useColorModeValue('gray.600', 'gray.400');
+  const activeColor = useColorModeValue('gray.500');
+  const inactiveColor = useColorModeValue('black');
 
   const MotionBox = motion(Box)
 
@@ -48,87 +48,92 @@ useEffect(() => {
 
   return (
     <Box ref={headerRef}
-    px='40' 
-    py={'30'} 
-    w={'100%'} 
-    h={'auto'} 
-    position="sticky"
-    top="0"
-    zIndex="1000"
-    bg="#fff"
-    boxShadow="md"
+      w={'100%'} 
+      h={'auto'} 
+      position="sticky"
+      top="0"
+      zIndex="1000"
+      bg="white"
+      boxShadow="sm"
     >
-      <Container maxW={'container.xl'}>
-        <Flex as={'header'} justifyContent={'space-between'}>
-          <Flex  gap={'8'} alignItems={'end'}>
-            <Image src={logo} alt="logo" w={'40'} h={'40'}/> 
+    <Container maxW="container.lg" p={4} >
+    <Flex as={'header'} justifyContent={'space-between'} alignItems={'center'}>
+          <Flex  gap={2} alignItems={'stretch'}>
+            <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
             <Box >
               <Heading as='h1' fontSize={'1.2rem'} fontWeight={'700'}>Multimart</Heading>
               <Text fontSize={'12px'}>Since 1995</Text>
             </Box>
           </Flex>
           <Flex as={'nav'} gap={'30'} >
-            <NavLink to= '/home'>
+            <NavLink to= '/home' >
               <Link  
                 px={2}
                 py={1}
-                rounded="md"
-                _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }}
+                fontWeight={500}
+                _hover={{ textDecoration: 'none', fontWeight:'600'}}
                 color={getLinkColor('/home')}>
               Home
               </Link>
             </NavLink>
-             <NavLink to= '/shop'>
+             <NavLink to= '/shop' >
                 <Link 
                    px={2}
                    py={1}
-                   rounded="md"
-                   _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }}
+                   fontWeight={500}
+                   _hover={{ textDecoration: 'none', fontWeight:'600'}}
                    color={getLinkColor('/shop')}>
                 Shop
                 </Link>
               </NavLink>   
-             <NavLink to= '/cart' >
+             <NavLink to= '/cart' border={'none'} >
                 <Link
                    px={2}
                    py={1}
-                   rounded="md"
-                   _hover={{ textDecoration: 'none', bg: useColorModeValue('gray.200', 'gray.700') }}
+                   fontWeight={500}
+                   _hover={{ textDecoration: 'none', fontWeight:'600'}}
                    color={getLinkColor('/cart')}>
                 Cart
                 </Link>
               </NavLink>        
           </Flex>
-          <Flex gap={'20'} alignItems={'center'}> 
-          <NavLink to='/shop'>
+          <Flex gap={6} alignItems={'center'}> 
+            <NavLink to='/cart'>
+              <Box pos={'relative'}>
+                <IconButton as={FiShoppingBag} w={'25px'} h={'25px'} bg={'none'}
+                _hover={{ textDecoration: 'none',  bg:'none'}}
+                />
+                <Box as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                  {totalQuantity} 
+                </Box> 
+              </Box>
+            </NavLink>
+            <NavLink to='/fav'>
             <Box pos={'relative'}>
-              <IconButton as={FiShoppingBag} w={'24px'} h={'24px'} />
-              <Box as='span' pos={'absolute'} top={'-8%'} right={'-18%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
-                {totalQuantity} 
-              </Box> 
-            </Box>
-          </NavLink>
-          <NavLink to='/fav'>
-          <Box pos={'relative'}>
-              <IconButton as={FiHeart} w={'27px'} h={'27px'} />
-              <Box as='span' pos={'absolute'} top={'-8%'} right={'-18%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
-                2
-              </Box> 
-            </Box>
-          </NavLink>
-          <NavLink to='/login'>
-          <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-            <Image src={userImg} alt='user' w={35} h={35}/>
-              {/* <IconButton as={FiUser} w={'25px'} h={'25px'} /> */}
-          </MotionBox>
-          </NavLink>
+                <IconButton as={FiHeart} w={'27px'} h={'27px'} bg={'none'} 
+                _hover={{ textDecoration: 'none',  bg:'none'}}
+                />
+                <Box as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'black'} color={'white'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                  2
+                </Box> 
+              </Box>
+            </NavLink>
+            <NavLink to='/login'>
+            <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+              <Image src={userImg} alt='user' w={35} h={35}/>
+                {/* <IconButton as={FiUser} w={'25px'} h={'25px'} /> */}
+            </MotionBox>
+            </NavLink>
           </Flex>
           <Box display={'none'} >
             <FiMenu />
           </Box>
         </Flex>
+      </Container>
+     
+        
     
-    </Container> 
+
     </Box>
   )
 }
@@ -142,6 +147,7 @@ export default Header
 //add driver!!!!!
 // сделать активное добавление спанов в зависимости от присутсивия товаров в корзине 
 // найти новый лого
+// сделать анимацию с драгом на спане
 
 
 

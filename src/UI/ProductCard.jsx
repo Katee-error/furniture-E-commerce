@@ -14,6 +14,7 @@ const MotionImg = motion(Image)
 const MotionButton = motion(Button)
 
 const dispatch = useDispatch()
+
 const addToCart = () => {
   dispatch(cartActions.addItem({
     id: item.id,
@@ -24,8 +25,8 @@ const addToCart = () => {
 toast.success('Product added successfully!') // добавление уведомлениЯ о добавлении продукта в корзину
 }
   return (
-    <Card maxW='270px'>
-        <CardBody>
+    <Card p={'20px 15px'} boxShadow={'none'}>
+        <CardBody p='none'>
             <MotionImg 
             whileHover={{ scale: 0.9 }}
             src={item.imgUrl}
@@ -34,30 +35,28 @@ toast.success('Product added successfully!') // добавление уведо�
             w={'100%'}
             h={'auto'}
             />
-            <Stack mt='6' spacing='3'>
+            <Stack mt='6px'>
             <Heading as={"h3"} fontSize={'1.3rem'} fontWeight={600} mt={'15px'}>
             <Link to={`/shop/${item.id}`}>{item.productName}</Link>
             </Heading>
-            <Text fontSize={'0.9rem'}>{item.category}</Text>
+            <Text fontSize={'xs'}>{item.category}</Text>
             </Stack>
         </CardBody>
-        <Divider />
-
-        <Flex alignItems={'flex-end'} justifyContent={'space-between'}>
-            <Text fontSize={'1.3rem'} fontWeight={500} color={'#0a1d37'}>
+        <Divider color={'gray.300'} />
+        <Flex alignItems={'center'} justifyContent={'space-between'}>
+            <Text fontSize={'lg'} fontWeight={500} color={'gray.800'}>
             ${item.price}
             </Text>
             <MotionButton onClick={addToCart}
-                mt={7}
-                bg={'#0a1d37'}
+                bg={'gray.800'}
                 borderRadius={'50px'}
-                color={'#fff'}
+                color={'white'}
                 border={'none'}
                 whileTap={{ scale: 1.2 }}
-                w={30}
-                h={30}
+                w={'30px'}
+                h={'30px'}
             >
-            <FiPlus />
+            <IconButton as={FiPlus} w={'15px'} h={'15px'} bg={'none'} color={'white'} />
             </MotionButton>
         </Flex>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Helmet from '../components/Helmet'
-import { Container, Box, Flex, Text, Button, Image, Grid, Heading, Center, SimpleGrid } from '@chakra-ui/react';
+import { Container, Box, Flex, Text, Button, Image, Heading, Center, SimpleGrid } from '@chakra-ui/react';
 import heroImg from './../assets/images/hero-img.png'
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,8 @@ import ProductList from '../UI/ProductList';
 import products from '../assets/data/products';
 import timerImg from './../assets/images/counter-timer-img.png'
 import TimerCount from '../components/TimerCount';
+
+
 const Home = () => {
 
   const MotionButton = motion(Button)
@@ -36,21 +38,21 @@ const Home = () => {
 
   return (
    <Helmet title={'Home'}>
-      <Box as='section' px={40} py={50} bg={'#d6e5fb'}>
-        <Container>
-          <Flex gap={40} justifyContent={"space-between"} alignItems={'center'}>
-            <Box>
+      <Box as='section' py={"50px"} bg={'#d6e5fb'}>
+        <Container maxW={"container.lg"}>
+          <Flex gap={5} justifyContent={"space-between"} alignItems={'center'}>
+            <Box w={'50%'}>
               <Text>
                 Trending product in {year}
               </Text>
-              <Text as={'h2'} fontSize={'2.5rem'} fontWeight={600} py={20}>
+              <Text as={'h2'} fontSize={'2.5rem'} fontWeight={600} p={'8px 0 20px'}>
                 Make Your Interior More Minimalistic & Modern
               </Text>
               <Text>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eaque dolore repudiandae explicabo non officiis assumenda nobis voluptatum hic voluptate.
               </Text>
               <Link to='/shop'>
-              <MotionButton bg={'#0a1d37'}  fontSize={16} py={'15px'} px={'40px'} borderRadius={'50'}  color={'#fff'} mt={30} border={'none'}
+              <MotionButton bg={'#0a1d37'}  fontSize={16} py={'15px'} px={'40px'} borderRadius={'50'}  color={'white'} mt={30} border={'none'}
                 whileTap={{ scale: 0.9 }} whileHover={{scale: 1.05}}>
                  Shop Now
               </MotionButton>  
@@ -63,26 +65,30 @@ const Home = () => {
         </Container>
       </Box>
       <Services/>
-      <Box as='section' px={40} py={50}>
-        <Center>
+      <Box as='section' py={'40px'}>
+        <Container maxW={'container.xl'}>
+          <Center>
           <Heading>Trending Product</Heading>
         </Center>
-        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
+        <SimpleGrid minChildWidth='280px' spacing={5}>
             <ProductList data={trendingProducts}/>
         </SimpleGrid>
+        </Container>
       </Box>
-      <Box as='section'  px={40} py={50}>
+      <Box as='section' py={'40px'}>
+      <Container maxW={'container.xl'}>
         <Center>
           <Heading>Best Sales</Heading>
         </Center>
-        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
+        <SimpleGrid  minChildWidth='270px' spacing={5}>
           <ProductList data={bestSalesProducts}/>
         </SimpleGrid>
+        </Container>
       </Box>
-      <Box as='section'  px={40} pt={60}  bg={'#0a1d37'} h={'auto'}>
+      <Box as='section' py={'40px'} bg={'#0a1d37'} h={'auto'}>
         <Flex alignItems={'center'} justifyContent={'space-around'}>
-          <Box color={'#fff'} mb={'20px'}>
-            <Heading as={'h4'} mb={'5px'} fontSize={'15px'} >
+          <Box color={'white'} mb={'20px'}>
+            <Heading as={'h4'} mb={'5px'} fontSize={'xs'} >
               Limited Offers
             </Heading>
             <Heading as={'h3'} mb={"30px"} >
@@ -91,7 +97,7 @@ const Home = () => {
             <TimerCount/>
             <Link to='/shop'>
             <MotionButton whileTap={{ scale: 0.9 }}
-                bg={'#fff'}  fontSize={16} py={'12px'} px={'40px'} borderRadius={'50'}  color={'#0a1d37'} mt={30} border={'none'}
+                bg={'#fff'}  fontSize={'sm'} py={'12px'} px={'40px'} borderRadius={'50'}  color={'#0a1d37'} mt={30} border={'none'}
             > Visit Store
             </MotionButton>
             </Link>
@@ -99,29 +105,36 @@ const Home = () => {
           <Image src={timerImg} w={'30%'} h={'30%'}  />
         </Flex>
       </Box>
-      <Box as='section' px={40} py={50}>
+      <Box as='section' py={'40px'}>
+      <Container maxW={'container.xl'}>
         <Center>
-          <Heading py={40}>Wardrobe</Heading>
+          <Heading >Wardrobe</Heading>
         </Center>
-        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
-            <ProductList data={wardrobeProducts}/>
+        <SimpleGrid  minChildWidth='270px' spacing={5}>
+          <ProductList data={wardrobeProducts}/>
         </SimpleGrid>
+        </Container>
       </Box>
-      <Box as='section'  px={40} py={50}>
+      <Box as='section' py={'40px'}>
+      <Container maxW={'container.xl'}>
         <Center>
-          <Heading  py={40}>Desk</Heading>
+          <Heading>Desk</Heading>
         </Center>
-        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
+        <SimpleGrid minChildWidth='270px' spacing={5}>
           <ProductList data={deskProducts}/>
         </SimpleGrid>
+        </Container>
       </Box>
-      <Box as='section' px={40} py={50}>
-        <Center>
-          <Heading  py={40}>Table</Heading>
+      <Box as='section' py={'40px'}>
+        <Container maxW={'container.xl'} >
+           <Center>
+          <Heading>Table</Heading>
         </Center>
-        <SimpleGrid px={40} minChildWidth='230px' spacing={40}>
+        <SimpleGrid minChildWidth='270px' spacing={5}>
             <ProductList data={tableProducts}/>
         </SimpleGrid>
+        </Container>
+       
       </Box>   
    </Helmet>
    

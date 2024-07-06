@@ -6,7 +6,6 @@ const CommonSection = ({title}) => {
   return (
            <Box
                 bgImage="url('/common-bg.png')"
-                //bgGradient="linear(rgba(0,0,0,0.562), rgba(0,0,0,0.562))"
                 bgPosition="center"
                 bgRepeat="no-repeat"
                 bgSize="cover"
@@ -16,7 +15,7 @@ const CommonSection = ({title}) => {
                 justifyContent="center"
            >
             <Center>
-                <Heading as={"h1"} fontWeight={600} color={'#000'} fontSize={'30px'} >
+                <Heading as={"h1"} fontWeight={600} color={'black'} fontSize={'3xl'} >
                     {title}
                 </Heading>
             </Center>

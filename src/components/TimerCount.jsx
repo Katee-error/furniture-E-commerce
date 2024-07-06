@@ -38,56 +38,57 @@ const TimerCount = () => {
 
 
   return (
-    <Flex alignItems={'center'} gap={7}>
-        <Flex alignItems={'center'} gap={5} color={'#fff'} >
+    <Flex alignItems={'center'} gap={5}>
+        <Flex alignItems={'center'} gap={3} color={'white'} >
           <Box textAlign={'center'} mr={'5px'}>
-            <Heading as='h2'  fontSize={'50px'}>
+            <Heading as='h2'  fontSize={'5xl'}>
               {days}
             </Heading>
-            <Heading as='h5'  fontSize={'12px'}>
+            <Heading as='h5'  fontSize={'sm'}>
               days
             </Heading>
           </Box>
-          <Box as='span' fontSize={'30px'} >
+          <Box as='span' fontSize={'3xl'} >
             :
           </Box>
         </Flex>
-        <Flex alignItems={'center'} gap={5}>
-          <Box textAlign={'center'} m={'10px'}>
-            <Heading as='h2'  fontSize={'50px'}>
+        <Flex alignItems={'center'} gap={5} color={'white'} >
+          <Box textAlign={'center'} mr={'5px'}>
+            <Heading as='h2'  fontSize={'5xl'}>
               {hours}
             </Heading>
-            <Heading as='h5' fontSize={'12px'}>
-              hours
+            <Heading as='h5'  fontSize={'sm'}>
+              days
             </Heading>
           </Box>
-          <Box as='span' fontSize={'30px'}>
+          <Box as='span' fontSize={'3xl'} >
             :
           </Box>
         </Flex>
-        <Flex alignItems={'center'} gap={5}>
-          <Box textAlign={'center'} m={'10px'}>
-            <Heading as='h2'  fontSize={'50px'}>
+        <Flex alignItems={'center'} gap={5} color={'white'} >
+          <Box textAlign={'center'} mr={'5px'}>
+            <Heading as='h2'  fontSize={'5xl'}>
               {minutes}
             </Heading>
-            <Heading as='h5'  fontSize={'12px'}>
-              min
+            <Heading as='h5'  fontSize={'sm'}>
+              days
             </Heading>
           </Box>
-          <Box as='span' fontSize={'30px'}>
+          <Box as='span' fontSize={'3xl'} >
             :
           </Box>
         </Flex>
-        <Flex alignItems={'center'} gap={5}>
-          <Box textAlign={'center'} m={'10px'}>
-            <Heading as='h2'   fontSize={'50px'}>
+        <Flex alignItems={'center'} gap={5} color={'white'} >
+          <Box textAlign={'center'} mr={'5px'}>
+            <Heading as='h2'  fontSize={'5xl'}>
               {seconds}
             </Heading>
-            <Heading as='h5'  fontSize={'12px'}>
-              sec
+            <Heading as='h5'  fontSize={'sm'}>
+              days
             </Heading>
           </Box>
         </Flex>
+        
     </Flex>
   )
 }
