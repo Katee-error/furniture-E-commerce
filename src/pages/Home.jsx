@@ -108,7 +108,7 @@ const Home = () => {
       <Box as='section' py={'40px'}>
       <Container maxW={'container.xl'}>
         <Center>
-          <Heading >Wardrobe</Heading>
+          <Heading>Wardrobe</Heading>
         </Center>
         <SimpleGrid  minChildWidth='270px' spacing={5}>
           <ProductList data={wardrobeProducts}/>

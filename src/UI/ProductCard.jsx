@@ -42,8 +42,8 @@ toast.success('Product added successfully!') // добавление уведо�
             <Text fontSize={'xs'}>{item.category}</Text>
             </Stack>
         </CardBody>
-        <Divider color={'gray.300'} />
-        <Flex alignItems={'center'} justifyContent={'space-between'}>
+       
+        <Flex alignItems={'center'} justifyContent={'space-between'} mt={'20px'}>
             <Text fontSize={'lg'} fontWeight={500} color={'gray.800'}>
             ${item.price}
             </Text>
