@@ -17,7 +17,38 @@ import { toast } from 'react-toastify'
 
 const Productdetail = () => {
 
-  
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (e) => {
+    const { userName, value } = e.target;
+    setFormData({
+      ...formData,
+      [userName]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const reviewUserName = reviewUser.current.value
+    const reviewUserMsg = reviewMsg.current.value
+
+    const reviewObj = {
+      userName: reviewUserName,
+      text: reviewUserMsg,
+      rating,
+    };
+
+    console.log(reviewObj)
+    toast.success('Review submited!')
+
+    setFormData({
+      userName: '',
+      text: '',
+  }
+)
+  }
+
   const [rating, setRating] = useState(null)
 
   const reviewUser = useRef('')
@@ -32,22 +63,10 @@ const Productdetail = () => {
 
   const relatedProduct = products.filter(item => item.category === category)
 
-  const submitHandler = (e) => {
-    e.preventDefault()
+  
 
-    const reviewUserName = reviewUser.current.value
-    const reviewUserMsg = reviewMsg.current.value
-
-    const reviewObj = {
-      userName: reviewUserName,
-      text: reviewUserMsg,
-      rating,
-    };
-
-    console.log(reviewObj)
-    toast.success('Review submited!')
-  }
   const MotionButton = motion(Button)
+  const MotionRating = motion(Flex)
 
 const addToCart = () => {
     dispatch(cartActions.addItem({
@@ -58,6 +77,8 @@ const addToCart = () => {
     }));
   toast.success('Product added successfully!') 
    }
+
+
   return (
     <Helmet title={productName}>
       <CommonSection title={productName}/>
@@ -92,6 +113,7 @@ const addToCart = () => {
                 color={'white'}
                 border={'none'}
                 whileTap={{ scale: 1.2 }}
+                _hover={{bgColor:'gray.600'}}
             >
             Add to Cart
             </MotionButton>
@@ -124,39 +146,39 @@ const addToCart = () => {
                 </Box>
                 ))}
               </Text>
-              <Box w={'80%'} mt={'50px'} onSubmit={submitHandler} as='form'>
+              <Box w={'80%'} mt={'50px'} onSubmit={handleSubmit} as='form'>
                 <Heading mb={'20px'}>Leave your expirience</Heading>
-                <FormControl mb={'10px'}>
-                  <Input type='text' placeholder='Enter your name' ref={reviewUser}/>
+                <FormControl mb={'10px'} isRequired>
+                  <Input type='text' placeholder='Enter your name'  ref={reviewUser} onChange={(e) => handleChange(e.target.value)}/>
                 </FormControl>
                 <Flex gap={5} color={'orange'} mb={'15px'} >
-                  <Flex as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(1)} cursor={'pointer'} >
+                  <MotionRating whileTap={{scale: 0.9}} as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(1)} cursor={'pointer'} >
                     1
-                  <FiStar/>
-                  </Flex>
-                  <Flex as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(2)} cursor={'pointer'} >
+                  <FiStar fill='orange' stroke={'none'}/>
+                  </MotionRating>
+                  <MotionRating whileTap={{scale: 0.9}} as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(2)} cursor={'pointer'} >
                     2
-                  <FiStar/>
-                  </Flex>
-                  <Flex as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(3)} cursor={'pointer'} >
+                    <FiStar fill='orange' stroke={'none'}/>
+                  </MotionRating>
+                  <MotionRating whileTap={{scale: 0.9}} as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(3)} cursor={'pointer'} >
                     3
-                  <FiStar/>
-                  </Flex>
-                  <Flex as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(4)} cursor={'pointer'} >
+                    <FiStar fill='orange' stroke={'none'}/>
+                  </MotionRating>
+                  <MotionRating whileTap={{scale: 0.9}} as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(4)} cursor={'pointer'} >
                     4
-                  <FiStar/>
-                  </Flex>
-                  <Flex as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(5)} cursor={'pointer'} >
+                    <FiStar fill='orange' stroke={'none'}/>
+                  </MotionRating>
+                  <MotionRating whileTap={{scale: 0.9}} as='span' alignItems={'center'} gap={'3px'} onClick={() => setRating(5)} cursor={'pointer'} >
                     5
-                  <FiStar/>
-                  </Flex> 
+                    <FiStar fill='orange' stroke={'none'}/>
+                  </MotionRating> 
                 </Flex>
-                <FormControl mb={'20px'}>
+                <FormControl mb={'20px'} isRequired>
                   <InputGroup>
-                    <Textarea  type='text' placeholder='Review message....' ref={reviewMsg}/>
+                    <Textarea  type='text' placeholder='Review message....'  ref={reviewMsg} onChange={(e) => handleChange(e.target.value)}/>
                   </InputGroup>
                 </FormControl>
-                <Button type='submit'>Submit</Button>
+                <MotionButton bgColor={'#0a1d37'} color={'white'} _hover={{bgColor:'gray.600'}} whileTap={{ scale: 1.2 }} type='submit'>Submit</MotionButton>
               </Box>
             </TabPanel>
           </TabPanels>  
@@ -168,8 +190,7 @@ const addToCart = () => {
           </Heading>
           <SimpleGrid minChildWidth='280px' spacing={5}>
              <ProductList data={relatedProduct}/>
-          </SimpleGrid>
-         
+          </SimpleGrid>  
         </Box> 
         </Container>
       </Box>
@@ -179,4 +200,5 @@ const addToCart = () => {
 
 export default Productdetail
 
-
+// сделать валидацию формы 
+//очистка формы после сабмита 

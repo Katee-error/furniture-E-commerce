@@ -52,10 +52,19 @@ const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eaque dolore repudiandae explicabo non officiis assumenda nobis voluptatum hic voluptate.
               </Text>
               <Link to='/shop'>
-              <MotionButton bg={'#0a1d37'}  fontSize={16} py={'15px'} px={'40px'} borderRadius={'50'}  color={'white'} mt={30} border={'none'}
-                whileTap={{ scale: 0.9 }} whileHover={{scale: 1.05}}>
-                 Shop Now
-              </MotionButton>  
+              <MotionButton 
+                bg={'gray.800'}
+                borderRadius={50}
+                color={'white'}
+                border={'none'}
+                whileTap={{ scale: 1.2 }}
+                whileHover={{ scale: 1.05 }}
+                _hover={{bgColor:'gray.600'}}
+                mt={'25px'}
+                p={'25px 40px'}
+            >
+            Shop Now
+            </MotionButton>
               </Link>                                                                                
             </Box>
             <Box>
