@@ -33,7 +33,7 @@ const Cart = () => {
           <Flex justifyContent={'space-between'}>
             <TableContainer p={'40px'}>
             {
-              cartItems.length === 0 ? <Heading fontSize={'xl'} textAlign={'center'}>No item added to the cart!</Heading> :
+              cartItems.length === 0 ? <Heading fontSize={'2xl'} textAlign={'center'}>No item added to the cart!</Heading> :
               <Table variant='simple' w={'100%'} size='sm'>
                 <Thead>
                   <Tr>
@@ -66,20 +66,22 @@ const Cart = () => {
               <Text fontSize={'sm'} mb={'30px'}>taxes and shipping will calculate in checkout</Text>
               <Flex flexDirection={'column'} gap={5} >
                 <Link to='/checkout'><MotionButton 
+                size={'sm'}
                 bg={'gray.800'}
-                borderRadius={10}
+                borderRadius={5}
                 color={'white'}
                 border={'none'}
                 whileTap={{ scale: 1.2 }}
                 whileHover={{ scale: 1.05 }}
                 _hover={{bgColor:'gray.600'}}
                 mt={'5px'}
-                p={'25px 75px'}
+                p={'25px 70px'}
                 >Checkout</MotionButton></Link>
 
                 <Link to='/shop'><MotionButton
+                size={'sm'}
                 bg={'gray.800'}
-                borderRadius={10}
+                borderRadius={5}
                 color={'white'}
                 border={'none'}
                 whileTap={{ scale: 1.2 }}
