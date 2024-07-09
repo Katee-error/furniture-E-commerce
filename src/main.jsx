@@ -6,7 +6,7 @@ import App from './App.jsx'
 import './index.css'
 import { store } from './redux/store.js';
 import { Provider } from 'react-redux';
-
+import './firebase.js'
 import { ToastContainer } from 'react-toastify';// добавление уведомлениЯ о добавлении продукта в корзину
 import 'react-toastify/dist/ReactToastify.css';// добавление уведомлениЯ о добавлении продукта в корзину
 import { theme } from '@chakra-ui/react';
