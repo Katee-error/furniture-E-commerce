@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import Services from '../services/Services';
 import ProductList from '../UI/ProductList';
 import products from '../assets/data/products';
-import timerImg from './../assets/images/counter-timer-img.png'
+import timerImg from './../assets/images/timer-3.jpg'
 import TimerCount from '../components/TimerCount';
 
 
@@ -38,14 +38,23 @@ const Home = () => {
 
   return (
    <Helmet title={'Home'}>
-      <Box as='section' py={"50px"} bg={'#d6e5fb'}>
+      <Box as='section' py={"60px"} 
+      bgImage="url('/main-bg-01.jpg')"
+      bgPosition="center center"
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      height="600px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      >
         <Container maxW={"container.lg"}>
           <Flex gap={5} justifyContent={"space-between"} alignItems={'center'}>
             <Box w={'50%'}>
               <Text>
                 Trending product in {year}
               </Text>
-              <Text as={'h2'} fontSize={'2.5rem'} fontWeight={600} p={'8px 0 20px'}>
+              <Text as={'h1'} fontSize={'4xl'} fontWeight={600} p={'8px 0 20px'}>
                 Make Your Interior More Minimalistic & Modern
               </Text>
               <Text>
@@ -67,14 +76,14 @@ const Home = () => {
             </MotionButton>
               </Link>                                                                                
             </Box>
-            <Box>
+            {/* <Box>
               <Image src={heroImg}/>
-            </Box>
+            </Box> */}
         </Flex>
         </Container>
       </Box>
       <Services/>
-      <Box as='section' py={'40px'}>
+      <Box as='section' py={'60px'}>
         <Container maxW={'container.xl'}>
           <Center>
           <Heading>Trending Product</Heading>
@@ -94,7 +103,7 @@ const Home = () => {
         </SimpleGrid>
         </Container>
       </Box>
-      <Box as='section' py={'40px'} bg={'#0a1d37'} h={'auto'}>
+      <Box as='section' py={'60px'} bg={'#0a1d37'}>
         <Flex alignItems={'center'} justifyContent={'space-around'}>
           <Box color={'white'} mb={'20px'}>
             <Heading as={'h4'} mb={'5px'} fontSize={'xs'} >
@@ -111,7 +120,7 @@ const Home = () => {
             </MotionButton>
             </Link>
           </Box>
-          <Image src={timerImg} w={'30%'} h={'30%'}  />
+          <Image src={timerImg} w={'40%'} borderRadius={10}/>
         </Flex>
       </Box>
       <Box as='section' py={'40px'}>

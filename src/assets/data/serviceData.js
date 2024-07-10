@@ -4,25 +4,25 @@ const serviceData = [
     icon: '/Free-shipping.svg', 
     title: "Free Shipping",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#fdefe6",
+    bg: "#F7F0DE",
   },
   {
     icon:"/Easy-returns.svg",
     title: "Easy Returns",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#ceebe9",
+    bg: "#F8E1BD",
   },
   {
     icon: "/lock.svg",
     title: "Secure Payment",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#e2f2b2",
+    bg: "#C6E1D1",
   },
   {
     icon: "/Back-guarantee.svg",
     title: " Back Guarantee",
     subtitle: "Lorem ipsum dolor sit amet.",
-    bg: "#d6e5fb",
+    bg: "#E5EAD1",
   },
 ];
 

@@ -8,7 +8,7 @@ const Services = () => {
 
     const MotionItem = motion(GridItem)
   return (
-    <Box as='section' p={'40px'} >
+    <Box as='section' p={'60px'} >
         <Container maxW='container.lg'>
             <SimpleGrid minChildWidth='230px' gap={'20px'} >
             {serviceData.map((item, i) => (

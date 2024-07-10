@@ -11,15 +11,25 @@ import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, IconButt
 
 } from '@chakra-ui/react';
 import { FiShoppingBag, FiHeart, FiMenu } from "react-icons/fi";
-import { FiUser } from "react-icons/fi";
 import { motion } from 'framer-motion'
 
-import logo from './../assets/images/logo.png'
-import userImg from './../assets/images/user-icon.png'
+import logo from './../assets/images/logo-3.png'
+import userImg from './../assets/images/user.png'
 
 
 
 const Header = () => {
+
+  // Анимация у спана корзины и wishlist
+  const bounceTransition = {
+    y: {
+      duration: 0.7,
+      repeat: Infinity,
+      repeatType: "mirror",
+      ease: "easeOut"
+    }
+  };
+
 const { onOpen, isOpen, onClose } = useDisclosure();
 const totalQuantity = useSelector(state => state.cart.totalQuantity) // добавление товара в корзину => отображение кол-ва товара добавленного в корзину
 
@@ -64,15 +74,16 @@ useEffect(() => {
       boxShadow="sm"
     >
     <Container maxW="container.lg" p={4} >
+      {/* DESKTOP */}
       <Flex as={'header'} justifyContent={'space-between'} alignItems={'center'} display={{ base: "none", md: "flex" }}>
           <Flex gap={2} alignItems={'stretch'}>
             <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
             <Box >
-              <Heading as='h1' fontSize={'1.2rem'} fontWeight={'700'}>Multimart</Heading>
+              <Heading as='h1' fontSize={'xl'} fontWeight={'700'}>Multimart</Heading>
               <Text fontSize={'12px'}>Since 1995</Text>
             </Box>
           </Flex>
-          <Flex as={'nav'} gap={'30'} >
+          <Flex as={'nav'} gap={'30px'} >
             <NavLink to= '/home' >
               <Link  
                 px={2}
@@ -110,24 +121,34 @@ useEffect(() => {
                 <IconButton as={FiShoppingBag} w={'25px'} h={'25px'} bg={'none'}
                 _hover={{ textDecoration: 'none',  bg:'none'}}
                 />
-                <Box as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                {/* Отображение спана с кол-вом товаров в корзине, только при > 0 */}
+                {
+                  totalQuantity > 0 && (
+                    <MotionBox as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'} 
+                    animate={{ y: ["0%", "-30%", "0%", "0%"] }}
+                    transition={bounceTransition}
+                    >
                   {totalQuantity} 
-                </Box> 
+                </MotionBox> 
+                  )}
               </Box>
             </NavLink>
-            <NavLink to='/fav'>
+            <NavLink to='#'>
             <Box pos={'relative'}>
                 <IconButton as={FiHeart} w={'27px'} h={'27px'} bg={'none'} 
                 _hover={{ textDecoration: 'none',  bg:'none'}}
                 />
-                <Box as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'black'} color={'white'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                {/* <MotionBox as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'black'} color={'white'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  
+                // animate={{ y: ["0%", "-30%", "0%", "0%"] }}
+                // transition={bounceTransition}
+                >
                   2
-                </Box> 
+                </MotionBox>  */}
               </Box>
             </NavLink>
             <NavLink>
               <Menu >
-                <MenuButton as={Button} bg={'none'} _active={{bg: 'none'}} _hover={{bg: 'none'}}>
+                <MenuButton as={Button} bg={'none'} _active={{bg: 'none'}} _hover={{bg: 'none'}} p={'0'}>
                   <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
                     <Image src={userImg} alt='user' w={35} h={35}/>
                       {/* <IconButton as={FiUser} w={'25px'} h={'25px'} /> */}
@@ -150,32 +171,41 @@ useEffect(() => {
             justifyContent={'space-between'}
           >
             <NavLink to='/'>
-              <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
+              <Flex alignItems={'center'} gap={'10px'}>
+                <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
+                <Heading as='h1' fontSize={'md'} fontWeight={'700'}>Multimart</Heading>
+              </Flex>
             </NavLink>
-            <Flex gap={3} alignItems={'center'}> 
+            <Flex gap={4} alignItems={'center'}> 
             <NavLink to='/cart'>
               <Box pos={'relative'}>
-                <IconButton as={FiShoppingBag} w={'18px'} h={'18px'} bg={'none'}
+                <IconButton as={FiShoppingBag} w={'23px'} h={'23px'} bg={'none'}
                 _hover={{ textDecoration: 'none',  bg:'none'}}
                 />
-                <Box as='span' pos={'absolute'} top={'-10%'} right={'-1%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                {
+                  totalQuantity > 0 && (
+                    <MotionBox as='span' pos={'absolute'} top={'-15%'} right={'-2%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'} 
+                    animate={{ y: ["0%", "-30%", "0%", "0%"] }}
+                    transition={bounceTransition}
+                    >
                   {totalQuantity} 
-                </Box> 
+                </MotionBox> 
+                  )}
               </Box>
             </NavLink>
             <NavLink to='/fav'>
             <Box pos={'relative'}>
-                <IconButton as={FiHeart} w={'20px'} h={'20px'} bg={'none'} 
+                <IconButton as={FiHeart} w={'25px'} h={'25px'} bg={'none'} 
                 _hover={{ textDecoration: 'none',  bg:'none'}}
                 />
-                <Box as='span' pos={'absolute'} top={'-12%'} right={'-1%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'black'} color={'white'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                {/* <Box as='span' pos={'absolute'} top={'-12%'} right={'-1%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'black'} color={'white'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
                   2
-                </Box> 
+                </Box>  */}
               </Box>
             </NavLink>
             <NavLink>
               <Menu >
-                <MenuButton as={Button} bg={'none'} _active={{bg: 'none'}} _hover={{bg: 'none'}}>
+                <MenuButton as={Button} bg={'none'} _active={{bg: 'none'}} _hover={{bg: 'none'}} p={'0'}>
                   <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
                     <Image src={userImg} alt='user' w={'30px'} h={'30px'}/>
                       {/* <IconButton as={FiUser} w={'20px'} h={'20px'} bg={'none'}  _hover={{ textDecoration: 'none',  bg:'none'}} /> */}

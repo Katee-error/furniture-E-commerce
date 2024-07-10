@@ -15,7 +15,7 @@ const CommonSection = ({title}) => {
                 justifyContent="center"
            >
             <Center>
-                <Heading as={"h1"} fontWeight={600} color={'black'} fontSize={'3xl'} >
+                <Heading as={"h1"} fontWeight={600} color={'white'} fontSize={'3xl'} >
                     {title}
                 </Heading>
             </Center>

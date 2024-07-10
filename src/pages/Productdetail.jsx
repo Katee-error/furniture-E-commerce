@@ -98,12 +98,10 @@ const addToCart = () => {
               </Flex>
               <Flex justifyContent={'space-between'} alignItems={'center'} >
                  <Text fontSize={'2xl'} color={'black'} fontWeight={600} >${price}</Text>
-                 <Text>Category:{category}</Text>
-              </Flex>
-             
-              
+                 <Text>Category: {category}</Text>
+              </Flex> 
               <Text my={5}>{shortDesc}</Text>
-              <MotionButton onSubmit={addToCart}
+              <MotionButton onClick={addToCart}
                 bg={'gray.800'}
                 borderRadius={5}
                 color={'white'}
