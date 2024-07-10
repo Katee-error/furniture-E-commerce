@@ -3,7 +3,7 @@ import products from '../assets/data/products'
 import { useParams } from 'react-router-dom'
 import Helmet from '../components/Helmet'
 import CommonSection from '../UI/CommonSection'
-import { Box, Flex, Container, Image, Heading, IconButton, Text, Button, Tabs, TabList, TabPanels, Tab, TabPanel, FormControl, InputGroup, Input, Textarea, SimpleGrid } from '@chakra-ui/react'
+import { Box, Flex, Container, Image, Heading, Text, Button, Tabs, TabList, TabPanels, Tab, TabPanel, FormControl, InputGroup, Input, Textarea, SimpleGrid } from '@chakra-ui/react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiStar } from "react-icons/fi";
@@ -50,7 +50,6 @@ const Productdetail = () => {
   }
 
   const [rating, setRating] = useState(null)
-
   const reviewUser = useRef('')
   const reviewMsg = useRef('')
 
@@ -60,10 +59,7 @@ const Productdetail = () => {
 
   
   const { imgUrl, productName, price, avgRating, reviews, description, shortDesc, category} = product;
-
   const relatedProduct = products.filter(item => item.category === category)
-
-  
 
   const MotionButton = motion(Button)
   const MotionRating = motion(Flex)
@@ -107,7 +103,7 @@ const addToCart = () => {
              
               
               <Text my={5}>{shortDesc}</Text>
-              <MotionButton onClick={addToCart}
+              <MotionButton onSubmit={addToCart}
                 bg={'gray.800'}
                 borderRadius={5}
                 color={'white'}

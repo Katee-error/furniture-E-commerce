@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { setUser } from './../redux/slice/userSlice'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import FormSignUp from '../components/FormSignUp'
+import { toast } from 'react-toastify';
 
 
 const SignUp = () => {
@@ -22,13 +23,16 @@ const SignUp = () => {
         .then(({user}) => {
           console.log(user)
           dispatch(setUser({
-              email: user.email,
-              id: user.uid,
-              token: user.accessToken
+            email: user.email,
+            id: user.uid,
+            token: user.accessToken
           }));
-          navigate('/')
+          toast.success('Successfully create an account')
+          navigate('/login')
        })
-       .catch(console.error)
+       .catch(error => {
+        toast.error(error.message)
+       })
   }
     
   return (

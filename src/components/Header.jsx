@@ -1,8 +1,14 @@
 import React from 'react'
 import { useRef, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation} from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, Link, IconButton } from '@chakra-ui/react';
+import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, IconButton, Button, Link,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+
+} from '@chakra-ui/react';
 import { FiShoppingBag, FiHeart, FiMenu } from "react-icons/fi";
 //import { FiUser } from "react-icons/fi";
 import { motion } from 'framer-motion'
@@ -118,11 +124,19 @@ useEffect(() => {
                 </Box> 
               </Box>
             </NavLink>
-            <NavLink to='/login'>
-            <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
-              <Image src={userImg} alt='user' w={35} h={35}/>
-                {/* <IconButton as={FiUser} w={'25px'} h={'25px'} /> */}
-            </MotionBox>
+            <NavLink>
+              <Menu >
+                <MenuButton as={Button} bg={'none'} _active={{bg: 'none'}} _hover={{bg: 'none'}}>
+                  <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+                    <Image src={userImg} alt='user' w={35} h={35}/>
+                      {/* <IconButton as={FiUser} w={'25px'} h={'25px'} /> */}
+                  </MotionBox>        
+                </MenuButton>
+                <MenuList>
+                  <NavLink to='/login'><MenuItem>Login</MenuItem></NavLink>
+                  <NavLink to='/signup'><MenuItem>Sign Up</MenuItem></NavLink>
+                </MenuList>
+                </Menu>
             </NavLink>
           </Flex>
           <Box display={'none'} >
@@ -153,4 +167,3 @@ export default Header
 
 
 
- 

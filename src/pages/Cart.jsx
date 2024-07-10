@@ -4,13 +4,11 @@ import CommonSection from '../UI/CommonSection'
 import { Container, Flex, Table, Image, Box, Button, Text, 
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
   TableContainer,
-  Heading,
-  Divider, } from '@chakra-ui/react'
+  Heading } from '@chakra-ui/react'
 
 import { FiTrash2 } from "react-icons/fi";
 import { motion } from 'framer-motion';

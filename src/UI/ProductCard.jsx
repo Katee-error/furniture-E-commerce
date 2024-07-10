@@ -27,6 +27,7 @@ toast.success('Product added successfully!') // добавление уведо�
   return (
     <Card p={'20px 15px'} boxShadow={'none'}>
         <CardBody p='none'>
+          <Link to={`/shop/${item.id}`}>
             <MotionImg 
             whileHover={{ scale: 0.9 }}
             src={item.imgUrl}
@@ -37,12 +38,12 @@ toast.success('Product added successfully!') // добавление уведо�
             />
             <Stack mt='6px'>
             <Heading as={"h3"} fontSize={'1.3rem'} fontWeight={600} mt={'15px'}>
-            <Link to={`/shop/${item.id}`}>{item.productName}</Link>
+            {item.productName}
             </Heading>
             <Text fontSize={'xs'}>{item.category}</Text>
             </Stack>
+           </Link> 
         </CardBody>
-       
         <Flex alignItems={'center'} justifyContent={'space-between'} mt={'20px'}>
             <Text fontSize={'lg'} fontWeight={500} color={'gray.800'}>
             ${item.price}
@@ -57,10 +58,10 @@ toast.success('Product added successfully!') // добавление уведо�
                 h={'30px'}
             >
             <IconButton as={FiPlus} w={'15px'} h={'15px'} bg={'none'} color={'white'} />
+
             </MotionButton>
         </Flex>
-
-</Card>
+    </Card>
   )
 }
 

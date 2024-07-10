@@ -8,9 +8,12 @@ import { useDispatch } from 'react-redux'
 
 import FormLogin from '../components/FormLogin';
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const Login = () => {
-
+  
+  const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   
@@ -18,22 +21,39 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
      .then(({user}) => {
+
+      setLoading(false)
         console.log(user)
         dispatch(setUser({
             email: user.email, 
             id: user.uid, 
             token: user.accessToken 
         }));
-        navigate('/login')
+        toast.success('Successfully logged in')
+        navigate('/shop')
      })
-     .catch(console.error)
+     .catch(error => {
+      setLoading(false)
+      toast.error(error.message)
+     })
 }
   return (
     <Helmet title='login'>
       <Box p={'40px'}>
         <Container maxW="container.lg" >
-          <Flex flexDirection={'column'} alignItems={'center'} as='section'  >
-            <Heading textAlign={'center'} mb={'30px'}>
+            {
+              loading ? 
+              <Flex py={'100px'}  textAlign={'center '}>
+                <Spinner
+                thickness='4px'
+                speed='0.65s'
+                emptyColor='gray.200'
+                color='blue.800'
+                size='xl'/>
+                <Text>Loading...</Text>
+              </Flex> :
+                <Flex flexDirection={'column'} alignItems={'center'} as='section'  >
+              <Heading textAlign={'center'} mb={'30px'}>
               Login
             </Heading>
             <FormLogin handleClick={handleLogin}/>
@@ -41,8 +61,9 @@ const Login = () => {
                   <Text> Don't have you account?{' '}
                   <Box as='span' fontWeight={600} color={'blue.400'}>Create an account</Box>
                   </Text>
-                  </Link>
-          </Flex>
+                  </Link> 
+            </Flex>
+            }
         </Container>
       </Box>
     </Helmet>

@@ -11,7 +11,7 @@ const TimerCount = () => {
 
   let interval;
   const countDown = () => {
-    const destination = new Date('Jul 10, 2024'). getTime()
+    const destination = new Date('Jul 20, 2024'). getTime()
 
     interval = setInterval(() => {
       const now = new Date().getTime()
@@ -58,7 +58,7 @@ const TimerCount = () => {
               {hours}
             </Heading>
             <Heading as='h5'  fontSize={'sm'}>
-              days
+              hours
             </Heading>
           </Box>
           <Box as='span' fontSize={'3xl'} >
@@ -71,7 +71,7 @@ const TimerCount = () => {
               {minutes}
             </Heading>
             <Heading as='h5'  fontSize={'sm'}>
-              days
+              minutes
             </Heading>
           </Box>
           <Box as='span' fontSize={'3xl'} >
@@ -84,7 +84,7 @@ const TimerCount = () => {
               {seconds}
             </Heading>
             <Heading as='h5'  fontSize={'sm'}>
-              days
+              seconds
             </Heading>
           </Box>
         </Flex>
