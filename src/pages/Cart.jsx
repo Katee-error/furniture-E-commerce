@@ -8,7 +8,8 @@ import { Container, Flex, Table, Image, Box, Button, Text,
   Th,
   Td,
   TableContainer,
-  Heading } from '@chakra-ui/react'
+  Heading, 
+  Stack} from '@chakra-ui/react'
 
 import { FiTrash2 } from "react-icons/fi";
 import { motion } from 'framer-motion';
@@ -28,10 +29,25 @@ const Cart = () => {
     <Helmet title={"Cart"}>
       <CommonSection title={"Shopping Cart"}/>
         <Container maxW="container.lg">
-          <Flex justifyContent={'space-between'}>
-            <TableContainer p={'40px'}>
             {
-              cartItems.length === 0 ? <Heading fontSize={'2xl'} textAlign={'center'}>No item added to the cart!</Heading> :
+              cartItems.length === 0 ? 
+              <Stack textAlign={'center'} py={'100px'} spacing={5}>
+                <Heading fontSize={'4xl'} >No item added to the cart!</Heading>
+                <Text>Once you add something to your cart, it will appear here. Ready to get started?</Text>
+                <Link to='/shop'><MotionButton 
+                size={'md'}
+                bg={'gray.800'}
+                borderRadius={5}
+                color={'white'}
+                border={'none'}
+                whileTap={{ scale: 1.2 }}
+                whileHover={{ scale: 1.05 }}
+                _hover={{bgColor:'gray.600'}}
+                p={'25px 40px'}
+                >Get Started</MotionButton></Link>
+              </Stack> :
+              <Flex justifyContent={'space-between'}>
+            <TableContainer p={'40px'}>
               <Table variant='simple' w={'100%'} size='sm'>
                 <Thead>
                   <Tr>
@@ -50,7 +66,6 @@ const Cart = () => {
                   }
                 </Tbody>
               </Table>
-            }
             </TableContainer>
             <Box p={'40px'} w={'37%'}>
               <Flex justifyContent={'space-between'} alignItems={'center'}>
@@ -75,7 +90,6 @@ const Cart = () => {
                 mt={'5px'}
                 p={'25px 70px'}
                 >Checkout</MotionButton></Link>
-
                 <Link to='/shop'><MotionButton
                 size={'sm'}
                 bg={'gray.800'}
@@ -89,7 +103,9 @@ const Cart = () => {
                 >Continue Shopping</MotionButton></Link>
               </Flex>
             </Box> 
-          </Flex>
+            </Flex>
+        }
+          
         </Container>
     </Helmet>
   )

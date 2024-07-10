@@ -13,7 +13,7 @@ import { FiShoppingBag, FiHeart, FiMenu } from "react-icons/fi";
 //import { FiUser } from "react-icons/fi";
 import { motion } from 'framer-motion'
 
-import logo from './../assets/images/eco-logo.png'
+import logo from './../assets/images/logo.png'
 import userImg from './../assets/images/user-icon.png'
 
 
@@ -33,9 +33,7 @@ const stickyNav = () => {
     }})
   } 
 
-
 useEffect(() => {
-
     stickyNav()
     return () => window.removeEventListener('scroll', stickyNav)
   }, []) 
@@ -64,7 +62,7 @@ useEffect(() => {
     >
     <Container maxW="container.lg" p={4} >
     <Flex as={'header'} justifyContent={'space-between'} alignItems={'center'}>
-          <Flex  gap={2} alignItems={'stretch'}>
+          <Flex gap={2} alignItems={'stretch'}>
             <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
             <Box >
               <Heading as='h1' fontSize={'1.2rem'} fontWeight={'700'}>Multimart</Heading>
@@ -155,12 +153,9 @@ useEffect(() => {
 export default Header
 
 
-// поменять лого на другую иконки или сделать  другой 
-// посмотреть по маршрутизации и переписать дизайн 
+
 // меню на мобилку
 //add driver!!!!!
-// сделать активное добавление спанов в зависимости от присутсивия товаров в корзине 
-// найти новый лого
 // сделать анимацию с драгом на спане
 
 

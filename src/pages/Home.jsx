@@ -54,7 +54,7 @@ const Home = () => {
               <Link to='/shop'>
               <MotionButton 
                 bg={'gray.800'}
-                borderRadius={50}
+                borderRadius={10}
                 color={'white'}
                 border={'none'}
                 whileTap={{ scale: 1.2 }}

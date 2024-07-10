@@ -24,7 +24,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             pauseOnHover={false}
             //theme='dark'
           />
-            <App />
+            <App/>
         </ChakraProvider> 
       </Provider>
       {/* </AuthProvider> */}
