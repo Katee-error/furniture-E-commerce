@@ -7,10 +7,11 @@ import { Box, Container, Flex, Heading, Image, Text, useColorModeValue, IconButt
   MenuButton,
   MenuList,
   MenuItem,
+  Drawer, DrawerBody, DrawerContent, DrawerOverlay,DrawerCloseButton, useDisclosure
 
 } from '@chakra-ui/react';
 import { FiShoppingBag, FiHeart, FiMenu } from "react-icons/fi";
-//import { FiUser } from "react-icons/fi";
+import { FiUser } from "react-icons/fi";
 import { motion } from 'framer-motion'
 
 import logo from './../assets/images/logo.png'
@@ -19,6 +20,7 @@ import userImg from './../assets/images/user-icon.png'
 
 
 const Header = () => {
+const { onOpen, isOpen, onClose } = useDisclosure();
 const totalQuantity = useSelector(state => state.cart.totalQuantity) // добавление товара в корзину => отображение кол-ва товара добавленного в корзину
 
 const headerRef = useRef(null) // sticky nav
@@ -44,6 +46,7 @@ useEffect(() => {
   const inactiveColor = useColorModeValue('black');
 
   const MotionBox = motion(Box)
+  const btnRef = React.useRef()
 
   const getLinkColor = (path) => {
     return location.pathname === path ? activeColor : inactiveColor;
@@ -61,7 +64,7 @@ useEffect(() => {
       boxShadow="sm"
     >
     <Container maxW="container.lg" p={4} >
-    <Flex as={'header'} justifyContent={'space-between'} alignItems={'center'}>
+      <Flex as={'header'} justifyContent={'space-between'} alignItems={'center'} display={{ base: "none", md: "flex" }}>
           <Flex gap={2} alignItems={'stretch'}>
             <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
             <Box >
@@ -137,25 +140,104 @@ useEffect(() => {
                 </Menu>
             </NavLink>
           </Flex>
-          <Box display={'none'} >
-            <FiMenu />
-          </Box>
         </Flex>
-      </Container>
-     
-        
-    
 
+
+        {/* Mobile */}
+        <Flex
+            display={{ base: "flex", md: "none" }}
+            alignItems={"center"}
+            justifyContent={'space-between'}
+          >
+            <NavLink to='/'>
+              <Image src={logo} alt="logo" w={'40px'} h={'40px'}/> 
+            </NavLink>
+            <Flex gap={3} alignItems={'center'}> 
+            <NavLink to='/cart'>
+              <Box pos={'relative'}>
+                <IconButton as={FiShoppingBag} w={'18px'} h={'18px'} bg={'none'}
+                _hover={{ textDecoration: 'none',  bg:'none'}}
+                />
+                <Box as='span' pos={'absolute'} top={'-10%'} right={'-1%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'#000'} color={'#fff'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                  {totalQuantity} 
+                </Box> 
+              </Box>
+            </NavLink>
+            <NavLink to='/fav'>
+            <Box pos={'relative'}>
+                <IconButton as={FiHeart} w={'20px'} h={'20px'} bg={'none'} 
+                _hover={{ textDecoration: 'none',  bg:'none'}}
+                />
+                <Box as='span' pos={'absolute'} top={'-12%'} right={'-1%'} content='' w={'18px'} h={'18px'} display={'flex'} bg={'black'} color={'white'} borderRadius={'50px'} alignItems={'center'} justifyContent={'center'} zIndex={10} fontSize={'0.7rem'}  >
+                  2
+                </Box> 
+              </Box>
+            </NavLink>
+            <NavLink>
+              <Menu >
+                <MenuButton as={Button} bg={'none'} _active={{bg: 'none'}} _hover={{bg: 'none'}}>
+                  <MotionBox whileTap={{ scale: 0.9 }} whileHover={{ scale: 1.1 }}>
+                    <Image src={userImg} alt='user' w={'30px'} h={'30px'}/>
+                      {/* <IconButton as={FiUser} w={'20px'} h={'20px'} bg={'none'}  _hover={{ textDecoration: 'none',  bg:'none'}} /> */}
+                  </MotionBox>        
+                </MenuButton>
+                <MenuList>
+                  <NavLink to='/login'><MenuItem>Login</MenuItem></NavLink>
+                  <NavLink to='/signup'><MenuItem>Sign Up</MenuItem></NavLink>
+                </MenuList>
+                </Menu>
+            </NavLink>
+            {/* Menu hamburger */}
+            <IconButton ref={btnRef} onClick={onOpen}  bg={'none'} as={FiMenu} w={'27px'} h={'27px'}/>
+            <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+              <DrawerOverlay />
+              <DrawerContent >
+                <DrawerCloseButton size={'2xl'} pt={'15px'}/>
+                <DrawerBody >
+                  <Flex py={'100px'} flexDirection={"column"} alignItems={'center'} gap={'40px'} onClick={onClose} fontSize={'2xl'}>
+                  <NavLink to= '/home' >
+                    <Link  
+                      px={2}
+                      py={1}
+                      fontWeight={500}
+                      _hover={{ textDecoration: 'none', fontWeight:'600'}}
+                      color={getLinkColor('/home')}>
+                    Home
+                    </Link>
+                  </NavLink>
+                  <NavLink to= '/shop' >
+                    <Link 
+                      px={2}
+                      py={1}
+                      fontWeight={500}
+                      _hover={{ textDecoration: 'none', fontWeight:'600'}}
+                      color={getLinkColor('/shop')}>
+                    Shop
+                    </Link>
+                  </NavLink>   
+                  <NavLink to= '/cart' border={'none'} >
+                      <Link
+                        px={2}
+                        py={1}
+                        fontWeight={500}
+                        _hover={{ textDecoration: 'none', fontWeight:'600'}}
+                        color={getLinkColor('/cart')}>
+                      Cart
+                      </Link>
+                    </NavLink>        
+                  </Flex>
+                </DrawerBody>
+              </DrawerContent>
+            </Drawer>
+            </Flex>
+          </Flex>
+      </Container>
     </Box>
   )
 }
 
 export default Header
 
-
-
-// меню на мобилку
-//add driver!!!!!
 // сделать анимацию с драгом на спане
 
 
