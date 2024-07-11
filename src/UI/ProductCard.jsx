@@ -56,8 +56,9 @@ toast.success('Product added successfully!') // добавление уведо�
                 whileTap={{ scale: 1.2 }}
                 w={'30px'}
                 h={'30px'}
+                _hover={{bgColor:'gray.600'}}
             >
-            <IconButton as={FiPlus} w={'15px'} h={'15px'} bg={'none'} color={'white'} />
+            <IconButton as={FiPlus} w={'15px'} h={'15px'} bg={'none'} color={'white'} _hover={'none'}/>
 
             </MotionButton>
         </Flex>

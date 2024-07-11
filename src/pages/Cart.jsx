@@ -31,9 +31,9 @@ const Cart = () => {
         <Container maxW="container.lg">
             {
               cartItems.length === 0 ? 
-              <Stack textAlign={'center'} py={'100px'} spacing={5}>
-                <Heading fontSize={'4xl'} >No item added to the cart!</Heading>
-                <Text>Once you add something to your cart, it will appear here. Ready to get started?</Text>
+              <Stack textAlign={'center'} p={{ base: "50px 0", md: "100px 0 " }} spacing={5}>
+                <Heading fontSize={{ base: "2xl", md: "4xl" }} >No item added to the cart!</Heading>
+                <Text fontSize={{ base: "xs", md: "sm" }}>Once you add something to your cart, it will appear here. Ready to get started?</Text>
                 <Link to='/shop'><MotionButton 
                 size={'md'}
                 bg={'gray.800'}
@@ -46,8 +46,8 @@ const Cart = () => {
                 p={'25px 40px'}
                 >Get Started</MotionButton></Link>
               </Stack> :
-              <Flex justifyContent={'space-between'}>
-            <TableContainer p={'40px'}>
+              <Flex justifyContent={'space-between'} flexDirection={{ sm: "column", md: "row" }}>
+            <TableContainer p={'40px'} display={{base: 'none', md: 'flex'}}>
               <Table variant='simple' w={'100%'} size='sm'>
                 <Thead>
                   <Tr>
@@ -67,8 +67,8 @@ const Cart = () => {
                 </Tbody>
               </Table>
             </TableContainer>
-            <Box p={'40px'} w={'37%'}>
-              <Flex justifyContent={'space-between'} alignItems={'center'}>
+            <Box p={'40px'} w={{base: '100%', md: '37%'}} >
+              <Flex justifyContent={'space-between'} alignItems={'center'} >
                 <Heading fontSize={'xl'}>
                   Subtotal
                 </Heading>

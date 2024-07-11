@@ -60,7 +60,7 @@ const handleSearch = (e) => {
       <CommonSection title={'Products'}/>
       <Box  py={'40px'}>
         <Container maxW={'container.lg'}>
-          <Flex justifyContent={'space-between'} gap={20} textAlign={'center'} >
+          <Flex justifyContent={'space-between'} gap={{ base: "15px", md: "40px" }} textAlign={'center'} flexDirection={{ base: "column", md: "row" }}>
             <FormControl>
               <Select placeholder="Filter By Catrgory" onChange={handleFilter}> 
                 <option value="sofa">Sofa</option>

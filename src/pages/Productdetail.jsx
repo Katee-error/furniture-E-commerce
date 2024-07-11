@@ -80,10 +80,10 @@ const addToCart = () => {
       <CommonSection title={productName}/>
       <Box py={'60px'}>
         <Container  maxW={'container.lg'}>
-          <Flex justifyContent={'space-between'} alignItems={'center'} gap={20}>
-            <Image src={imgUrl} w={'60%'}/>
+          <Flex justifyContent={'space-between'} alignItems={'center'} gap={{ base: "15px", md: "40px" }} flexDirection={{ base: "column", md: "row" }} >
+            <Image src={imgUrl} w={{ base: '100%', md: '60%'}}/>
             <Box >
-              <Heading mb={3}>
+              <Heading mb={3} fontSize={{ base: "xl", md: "2xl" }}>
                 {productName}
               </Heading>
               <Flex gap={2} alignItems={'center'} mb={3} >
@@ -97,8 +97,8 @@ const addToCart = () => {
                 <Flex color={'#999'}>(<Box color={'orange.400'} fontWeight={600}>{avgRating}</Box>rating)</Flex>
               </Flex>
               <Flex justifyContent={'space-between'} alignItems={'center'} >
-                 <Text fontSize={'2xl'} color={'black'} fontWeight={600} >${price}</Text>
-                 <Text>Category: {category}</Text>
+                 <Text fontSize={{ base: "xl", md: "2xl" }} color={'black'} fontWeight={600} >${price}</Text>
+                 <Text fontSize={{ base: "xs", md: "sm" }}>Category: {category}</Text>
               </Flex> 
               <Text my={5}>{shortDesc}</Text>
               <MotionButton onClick={addToCart}

@@ -15,7 +15,7 @@ const [password, setPassword] = useState('')
 const MotionButton = motion(Button)
 
   return (
-    <Box w={'45%'} mb={'15px'}>
+    <Box mb={'15px'} w={{ base: "100%", md: "45%" }} >
         <VStack as='form' spacing={'20px'} >
             <FormControl>
               <FormLabel fontSize={'sm'}>Email</FormLabel>

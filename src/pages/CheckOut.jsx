@@ -17,8 +17,8 @@ const MotionButton = motion(Button)
       <CommonSection title='Checkout'/>
         <Box>
           <Container maxW="container.lg">
-            <Flex justifyContent={'space-between'} py={'40px'} gap={'10px'} >
-              <Stack as='form' spacing={5} w={'50%'} >
+            <Flex justifyContent={'space-between'} py={'40px'} gap={'10px'} flexDirection={{ base: "column", md: "row" }} >
+              <Stack as='form' spacing={5} w={{sm: '100%', md: '50%'}} >
               <FormControl>
                 <Input type='text' placeholder='Enter your name' />
               </FormControl>
@@ -41,7 +41,7 @@ const MotionButton = motion(Button)
                 <Input type='text'  placeholder='Country' />
               </FormControl>
               </Stack>
-              <Stack  bg={'#0a1d37'} color={'white'} w={"40%"} p={'20px'} h={'60%'} spacing={'15px'} borderRadius={5}>
+              <Stack  bg={'#0a1d37'} color={'white'} w={{sm: '100%', md: '40%'}} p={'20px'} h={'60%'} spacing={'15px'} borderRadius={5} mt={{base: '20px'}}>
                 <Flex justifyContent={'space-between'} >
                   <Heading fontSize={'md'} fontWeight={400}>
                     Total Quantity:

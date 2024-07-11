@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
    <Helmet title={'Home'}>
-      <Box as='section' py={"60px"} 
+      <Box as='section' py={{base: '0', md: '60px'}} 
       bgImage="url('/main-bg-01.jpg')"
       bgPosition="center center"
       bgRepeat="no-repeat"
@@ -50,14 +50,14 @@ const Home = () => {
       >
         <Container maxW={"container.lg"}>
           <Flex gap={5} justifyContent={"space-between"} alignItems={'center'}>
-            <Box w={'50%'}>
+            <Box w={{base: '100%', md: '50%'}} textAlign={{base: 'center'}}>
               <Text>
                 Trending product in {year}
               </Text>
-              <Text as={'h1'} fontSize={'4xl'} fontWeight={600} p={'8px 0 20px'}>
+              <Text as={'h1'} fontSize={{base: '2xl', md: '4xl'}} fontWeight={600} p={'8px 0 20px'}>
                 Make Your Interior More Minimalistic & Modern
               </Text>
-              <Text>
+              <Text fontSize={{base: 'xs'}}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eaque dolore repudiandae explicabo non officiis assumenda nobis voluptatum hic voluptate.
               </Text>
               <Link to='/shop'>
@@ -104,8 +104,8 @@ const Home = () => {
         </Container>
       </Box>
       <Box as='section' py={'60px'} bg={'#0a1d37'}>
-        <Flex alignItems={'center'} justifyContent={'space-around'}>
-          <Box color={'white'} mb={'20px'}>
+        <Flex alignItems={'center'} justifyContent={'space-around'} flexDirection={{base: 'column', md: 'row'}}>
+          <Box color={'white'} mb={'20px'} textAlign={{base: 'center'}}>
             <Heading as={'h4'} mb={'5px'} fontSize={'xs'} >
               Limited Offers
             </Heading>
@@ -120,7 +120,7 @@ const Home = () => {
             </MotionButton>
             </Link>
           </Box>
-          <Image src={timerImg} w={'40%'} borderRadius={10}/>
+          <Image src={timerImg} w={{base: '100%', md: '40%'}} borderRadius={10}/>
         </Flex>
       </Box>
       <Box as='section' py={'40px'}>
