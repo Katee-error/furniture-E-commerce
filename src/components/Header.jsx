@@ -18,6 +18,7 @@ import userImg from './../assets/images/user.png'
 
 
 
+
 const Header = () => {
 
   // Анимация у спана корзины и wishlist
